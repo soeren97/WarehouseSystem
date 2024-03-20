@@ -8,7 +8,9 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from WarehouseSystem.constants import Base, categories_table
 from WarehouseSystem.data.generation import FakeData
-from WarehouseSystem.sqlClasses.items import Category, Item, Transaction
+from WarehouseSystem.sqlClasses.Categories import Category
+from WarehouseSystem.sqlClasses.Items import Item
+from WarehouseSystem.sqlClasses.Transactions import Transaction
 
 
 class SQLConnection:
