@@ -11,28 +11,28 @@ class TerminalMenu(MenuBuilder):
     def __init__(self) -> None:
         """Initialize class with specific menu options."""
         menu_options = {
-            "1": ("Search", self.option1),
-            "2": ("Option 2", self.option2),
-            "3": ("Create fake dataset", self.option3),
+            "1": ("Search", self.search),
+            "2": ("Add data", self.add_data),
+            "3": ("Create fake dataset", self.create_dataset),
             "4": ("Exit", self.exit_program),
         }
         super().__init__(menu_options)
 
-    def option1(self) -> None:
-        """Perform action for Option 1."""
+    def search(self) -> None:
+        """Perform search action."""
         self.clear_terminal()
         print("You selected search.")
         search_menu = SearchMenu()
         search_menu.run()
 
-    def option2(self) -> None:
-        """Perform action for Option 2."""
+    def add_data(self) -> None:
+        """Add data to database."""
         self.clear_terminal()
         print("You selected Option 2.")
         input("Press Enter to return to the main menu...")
 
-    def option3(self) -> None:
-        """Perform action for Option 3."""
+    def create_dataset(self) -> None:
+        """Create fake dataset."""
         self.clear_terminal()
         if self.connection.is_table_empty(Item):
             print("You selected created a fake dataset.")
@@ -42,5 +42,5 @@ class TerminalMenu(MenuBuilder):
             self.clear_terminal()
         else:
             print("Data already in server.")
-            print("If you want to add more use the option add data option.")
+            print("If you want to add more use the add data option.")
         input("Press Enter to return to the main menu...")

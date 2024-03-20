@@ -13,7 +13,6 @@ class IDSearch(SearchStrategy):
 
     def search(
         self,
-        session: Session,
         query: str,
     ) -> Any:
         """Search by ID.
@@ -26,7 +25,9 @@ class IDSearch(SearchStrategy):
             Any: Search results.
         """
         transactions = (
-            session.query(Transaction).filter(Transaction.id.like(f"%{query}%")).all()
+            self.session.query(Transaction)
+            .filter(Transaction.id.like(f"%{query}%"))
+            .all()
         )
 
         return transactions

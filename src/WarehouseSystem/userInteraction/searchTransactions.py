@@ -21,9 +21,9 @@ class SearchTransactionsMenu(MenuBuilder):
         self.clear_terminal()
         print("You selected Search by ID.")
 
-        id_search = IDSearch()
+        id_search = IDSearch(self.connection.session)
         id = input("Please write ID you want to search for: ")
-        transactions = id_search.search(self.connection.session, id)
+        transactions = id_search.search(id)
         if transactions:
             print("Found transactions:")
             for transaction in transactions:
