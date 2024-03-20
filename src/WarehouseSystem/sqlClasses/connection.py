@@ -4,6 +4,7 @@ from typing import Any, Generator, Union
 
 from mysql import connector
 from sqlalchemy import create_engine
+from sqlalchemy.exc import DataError
 from sqlalchemy.orm import Session, sessionmaker
 
 from WarehouseSystem.constants import Base, categories_table
@@ -99,11 +100,14 @@ class SQLConnection:
         """
         chunk = []
         for record in data:
-            chunk.append(dataclass(**record))
-            if len(chunk) >= chunk_size:
-                self.session.bulk_save_objects(chunk)
-                self.session.commit()
-                chunk = []
+            try:
+                chunk.append(dataclass(**record))
+                if len(chunk) >= chunk_size:
+                    self.session.bulk_save_objects(chunk)
+                    self.session.commit()
+                    chunk = []
+            except DataError as e:
+                print(f"Was not able to upload chunk. Error: {e}.")
         if chunk:
             self.session.bulk_save_objects(chunk)
             self.session.commit()
