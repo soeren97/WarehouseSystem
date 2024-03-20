@@ -1,6 +1,6 @@
 """Main loop."""
 
-from WarehouseSystem.userInteraction.menu import TerminalMenu
+from WarehouseSystem.userInteraction.mainMenu import TerminalMenu
 
 
 def main() -> None:
