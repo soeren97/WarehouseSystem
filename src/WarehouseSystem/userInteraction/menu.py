@@ -25,11 +25,6 @@ class MenuBuilder:
         for key, value in self.menu_options.items():
             print(f"{key}. {value[0]}")
 
-    def get_user_choice(self) -> str:
-        """Get input from user."""
-        choice = input("Enter your choice: ").strip()
-        return choice
-
     def run(self) -> None:
         """Run the menu."""
         while True:
@@ -44,10 +39,6 @@ class MenuBuilder:
             else:
                 print("Invalid choice. Please try again.")
 
-    def clear_terminal(self) -> None:
-        """Clear the terminal."""
-        os.system("cls" if os.name == "nt" else "clear")
-
     def return_to_main_menu(self) -> bool:
         """Return to the main menu."""
         self.clear_terminal()
@@ -60,6 +51,48 @@ class MenuBuilder:
         self.connection.session.close()
         print("Exiting the program.")
         exit()
+
+    @staticmethod
+    def get_user_choice() -> str:
+        """Get input from user."""
+        choice = input("Enter your choice: ").strip()
+        return choice
+
+    @staticmethod
+    def print_item(item: Any) -> None:
+        """Print an item.
+
+        Args:
+            item (Any): Item retrived from database.
+        """
+        print(
+            f"ID: {item.id}, "
+            f"Name: {item.name}, "
+            f"Description: {item.description}, "
+            f"Price: {item.price}, "
+            f"Number in stock: {item.number_in_stock}"
+            f"Category: {item.category}"
+        )
+
+    @staticmethod
+    def print_transaction(transaction: Any) -> None:
+        """Print a transaction.
+
+        Args:
+            transaction (Any): Transaction retrieved from database.
+        """
+        print(
+            f"ID: {transaction.id}, "
+            f"Item ID: {transaction.item_id}, "
+            f"Timestamp: {transaction.timestamp}, "
+            f"Quantity: {transaction.quantity}, "
+            f"Type: {transaction.type}"
+        )
+
+    @staticmethod
+    def clear_terminal() -> None:
+        """Clear the terminal."""
+        os.system("cls" if os.name == "nt" else "clear")
 
 
 if __name__ == "__main__":
