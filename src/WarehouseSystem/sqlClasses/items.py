@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from WarehouseSystem.constants import Base
 
 
-class Item(Base):  # type: ignore
+class Item(Base):
     """Item entity in warehouse database."""
 
     __tablename__ = "items"

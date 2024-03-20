@@ -7,7 +7,7 @@ from sqlalchemy import BIGINT, TIMESTAMP, Column, ForeignKey, Integer, String
 from WarehouseSystem.constants import Base
 
 
-class Transaction(Base):  # type: ignore
+class Transaction(Base):
     """Transaction entity in warehouse database."""
 
     __tablename__ = "transactions"

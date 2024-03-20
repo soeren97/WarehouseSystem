@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from WarehouseSystem.constants import Base
 
 
-class Category(Base):  # type: ignore
+class Category(Base):
     """Category entity in warehouse database."""
 
     __tablename__ = "categories"
