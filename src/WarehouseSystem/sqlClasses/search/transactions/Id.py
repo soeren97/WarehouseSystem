@@ -2,8 +2,6 @@
 
 from typing import Any
 
-from sqlalchemy.orm import Session
-
 from WarehouseSystem.sqlClasses.search.transactions.Base import SearchStrategy
 from WarehouseSystem.sqlClasses.Transactions import Transaction
 
@@ -18,7 +16,6 @@ class IDSearch(SearchStrategy):
         """Search by ID.
 
         Args:
-            session (Session): SQL session.
             query (str): ID.
 
         Returns:
