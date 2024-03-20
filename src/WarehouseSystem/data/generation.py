@@ -36,14 +36,10 @@ class FakeData:
         Returns:
             Generator[dict[str, Any], None, None]: Fake item.
         """
-        generated_names = set()  # Keep track of generated names
+        names = fake.words(self.num_items, unique=True)
         for _ in range(self.num_items):
-            name = fake.word()
-            # Ensure unique name
-            while name in generated_names:
-                name = fake.word()
-            generated_names.add(name)
-        for _ in range(self.num_items):
+            name = random.choice(names)
+            names.pop(names.index(name))
             yield {
                 "name": fake.word(),
                 "description": fake.text(),
