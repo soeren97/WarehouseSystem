@@ -100,14 +100,11 @@ class SQLConnection:
         """
         chunk = []
         for record in data:
-            try:
-                chunk.append(dataclass(**record))
-                if len(chunk) >= chunk_size:
-                    self.session.bulk_save_objects(chunk)
-                    self.session.commit()
-                    chunk = []
-            except DataError as e:
-                print(f"Was not able to upload chunk. Error: {e}.")
+            chunk.append(dataclass(**record))
+            if len(chunk) >= chunk_size:
+                self.session.bulk_save_objects(chunk)
+                self.session.commit()
+                chunk = []
         if chunk:
             self.session.bulk_save_objects(chunk)
             self.session.commit()

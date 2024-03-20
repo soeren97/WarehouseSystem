@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from sqlalchemy import BIGINT, TIMESTAMP, Column, ForeignKey, Integer, String
+from sqlalchemy import BIGINT, Column, DateTime, ForeignKey, Integer, String
 
 from WarehouseSystem.constants import Base
 
@@ -14,7 +14,7 @@ class Transaction(Base):
 
     id = Column(BIGINT, primary_key=True, autoincrement=True)
     item_id = Column(BIGINT, ForeignKey("items.id"))
-    timestamp = Column(TIMESTAMP)
+    timestamp = Column(DateTime)
     quantity = Column(Integer)
     type = Column(String(255))
 
