@@ -1,6 +1,7 @@
 """Main menu for TUI."""
 
 from WarehouseSystem.sqlClasses.Items import Item
+from WarehouseSystem.userInteraction.addMeny import AddMenu
 from WarehouseSystem.userInteraction.menu import MenuBuilder
 from WarehouseSystem.userInteraction.searchMenu import SearchMenu
 
@@ -28,7 +29,9 @@ class TerminalMenu(MenuBuilder):
     def add_data(self) -> None:
         """Add data to database."""
         self.clear_terminal()
-        print("You selected Option 2.")
+        print("You selected add data.")
+        add_menu = AddMenu()
+        add_menu.run()
         input("Press Enter to return to the main menu...")
 
     def create_dataset(self) -> None:
@@ -36,11 +39,11 @@ class TerminalMenu(MenuBuilder):
         self.clear_terminal()
         if self.connection.is_table_empty(Item):
             print("You selected created a fake dataset.")
-            num_items = input("Enter number of items: ")
-            num_transactions = input("Enter number of transactions: ")
+            num_items = int(input("Enter number of items: "))
+            num_transactions = int(input("Enter number of transactions: "))
             self.connection.create_fake_dataset(num_items, num_transactions)
-            self.clear_terminal()
         else:
             print("Data already in server.")
             print("If you want to add more use the add data option.")
         input("Press Enter to return to the main menu...")
+        self.clear_terminal()
