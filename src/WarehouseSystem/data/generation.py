@@ -41,7 +41,7 @@ class FakeData:
             name = random.choice(names)
             names.pop(names.index(name))
             yield {
-                "name": fake.word(),
+                "name": name,
                 "description": fake.text(),
                 "price": round(random.random() * 100, 2),
                 "number_in_stock": random.randint(0, 100),
