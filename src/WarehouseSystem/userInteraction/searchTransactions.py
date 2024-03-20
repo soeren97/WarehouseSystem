@@ -22,18 +22,12 @@ class SearchTransactionsMenu(MenuBuilder):
         print("You selected Search by ID.")
 
         id_search = IDSearch(self.connection.session)
-        id = input("Please write ID you want to search for: ")
+        id = input("Please write the ID you want to search for: ")
         transactions = id_search.search(id)
         if transactions:
             print("Found transactions:")
             for transaction in transactions:
-                print(
-                    f"ID: {transaction.id}, "
-                    f"Item ID: {transaction.item_id}, "
-                    f"Timestamp: {transaction.timestamp}, "
-                    f"Quantity: {transaction.quantity}, "
-                    f"Type: {transaction.type}"
-                )
+                self.print_transaction(transaction)
         else:
             print("No transactions found with the provided ID.")
         input("Press Enter to return to the search menu...")

@@ -1,6 +1,7 @@
 """Search menu."""
 
 from WarehouseSystem.userInteraction.menu import MenuBuilder
+from WarehouseSystem.userInteraction.searchItems import SearchItemsMenu
 from WarehouseSystem.userInteraction.searchTransactions import SearchTransactionsMenu
 
 
@@ -26,6 +27,6 @@ class SearchMenu(MenuBuilder):
     def search_items(self) -> None:
         """Perform action for searching items."""
         self.clear_terminal()
-        print("You selected Search Items.")
-        # Add your logic for searching items here
-        input("Press Enter to return to the search menu...")
+        print("You selected search items.")
+        item_search = SearchItemsMenu()
+        item_search.run()

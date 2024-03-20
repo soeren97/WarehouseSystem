@@ -2,8 +2,8 @@
 
 from typing import Any
 
+from WarehouseSystem.sqlClasses.Items import Item
 from WarehouseSystem.sqlClasses.search.transactions.Base import SearchStrategy
-from WarehouseSystem.sqlClasses.Transactions import Transaction
 
 
 class IDSearch(SearchStrategy):
@@ -21,10 +21,6 @@ class IDSearch(SearchStrategy):
         Returns:
             Any: Search results.
         """
-        transactions = (
-            self.session.query(Transaction)
-            .filter(Transaction.id.like(f"%{query}%"))
-            .all()
-        )
+        transactions = self.session.query(Item).filter(Item.id.like(f"%{query}%")).all()
 
         return transactions
