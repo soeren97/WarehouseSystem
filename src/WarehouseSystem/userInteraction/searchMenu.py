@@ -29,10 +29,3 @@ class SearchMenu(MenuBuilder):
         print("You selected Search Items.")
         # Add your logic for searching items here
         input("Press Enter to return to the search menu...")
-
-    def return_to_main_menu(self) -> bool:
-        """Return to the main menu."""
-        self.clear_terminal()
-        print("Returning to the main menu.")
-        return True
-        # Add any cleanup or additional logic here if needed

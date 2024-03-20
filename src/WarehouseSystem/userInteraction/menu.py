@@ -48,6 +48,12 @@ class MenuBuilder:
         """Clear the terminal."""
         os.system("cls" if os.name == "nt" else "clear")
 
+    def return_to_main_menu(self) -> bool:
+        """Return to the main menu."""
+        self.clear_terminal()
+        print("Returning to the main menu.")
+        return True
+
     def exit_program(self) -> None:
         """Exit the program."""
         self.clear_terminal()
