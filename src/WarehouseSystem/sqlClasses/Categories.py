@@ -11,8 +11,18 @@ class Category(Base):
 
     __tablename__ = "categories"
 
-    id = Column(BIGINT, primary_key=True)
+    id = Column(BIGINT, primary_key=True, autoincrement=True)
     name = Column(String(255))
     description = Column(String(255))
 
     items = relationship("Item", back_populates="category")
+
+    def __init__(self, name: str, description: str) -> None:
+        """Initialize class.
+
+        Args:
+            name (str): Name of category.
+            description (str): Description of category.
+        """
+        self.name = name
+        self.description = description
