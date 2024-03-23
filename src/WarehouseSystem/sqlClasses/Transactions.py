@@ -37,3 +37,14 @@ class Transaction(Base):
         self.timestamp = timestamp
         self.quantity = quantity
         self.type = type
+
+    def return_values(self) -> str:
+        """Return all values of transaction.
+
+        Returns:
+            str: Values.
+        """
+        return (
+            f"Item ID: {self.item_id}, Timestamp: {self.timestamp}, "
+            f"Quantity: {self.quantity}, Type: {self.type}"
+        )

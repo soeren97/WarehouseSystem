@@ -4,6 +4,7 @@ from typing import Optional
 
 from sqlalchemy.orm import Session
 
+from WarehouseSystem.logging import logger_wrapper_category
 from WarehouseSystem.sqlClasses.Categories import Category
 
 
@@ -37,11 +38,18 @@ class CategoryAdder:
         self.name = input("Please input name of category: ")
         self.description = input("Please input description of category: ")
 
-    def add_category(self) -> None:
-        """Add category to database."""
-        if self.exist_in_database():
+    @logger_wrapper_category  # type: ignore
+    def add_category(self) -> Optional[Category]:
+        """Add category to database.
+
+        Returns:
+            Optional[Category]: New category.
+        """
+        category = self.exist_in_database()
+        if category:
             print("Category already in database, if you wish to alter it go to edit.")
         else:
             category = Category(self.name, self.description)
             self.session.add(category)
             self.session.commit()
+        return category

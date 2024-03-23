@@ -45,6 +45,17 @@ class Item(Base):
         self.number_in_stock = number_in_stock
         self.category_id = category_id
 
+    def return_values(self) -> str:
+        """Return all values of item.
+
+        Returns:
+            str: Values.
+        """
+        return (
+            f"Item name: {self.name}, Description: {self.description}, "
+            f"Price: {self.price}, In stock: {self.number_in_stock}"
+        )
+
 
 if __name__ == "__main__":
     pass

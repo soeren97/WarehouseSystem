@@ -27,7 +27,6 @@ class AddMenu(MenuBuilder):
         adder.get_input()
         adder.add_transaction()
         print("Transaction added.")
-        input("Press Enter to return to the search menu...")
 
     def add_item(self) -> None:
         """Perform action for adding items."""
@@ -37,7 +36,6 @@ class AddMenu(MenuBuilder):
         adder.get_input()
         adder.add_item()
         print("Item added.")
-        input("Press Enter to return to the search menu...")
 
     def add_category(self) -> None:
         """Perform action for adding category."""
@@ -47,4 +45,3 @@ class AddMenu(MenuBuilder):
         adder.get_input()
         adder.add_category()
         print("Category added.")
-        input("Press Enter to return to the search menu...")

@@ -26,3 +26,11 @@ class Category(Base):
         """
         self.name = name
         self.description = description
+
+    def return_values(self) -> str:
+        """Return all values of category.
+
+        Returns:
+            str: Values.
+        """
+        return f"Name: {self.name}, Description: {self.description}."

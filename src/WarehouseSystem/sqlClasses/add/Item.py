@@ -4,6 +4,7 @@ from typing import Optional
 
 from sqlalchemy.orm import Session
 
+from WarehouseSystem.logging import logger_wrapper_items
 from WarehouseSystem.sqlClasses.Items import Item
 
 
@@ -50,8 +51,13 @@ class ItemAdder:
                     "Please enter a valid number for price, quantity, and category."
                 )
 
-    def add_item(self) -> None:
-        """Add item to the database."""
+    @logger_wrapper_items  # type: ignore
+    def add_item(self) -> Item:
+        """Add item to the database.
+
+        Returns:
+            Item: Item object.
+        """
         item = self.exist_in_database()
         if item:
             print("Item already in database adding to number in stock.")
@@ -64,6 +70,8 @@ class ItemAdder:
                 self.quantity,
                 self.category,
             )
-            self.session.add(item)
+        self.session.add(item)
 
         self.session.commit()
+
+        return item
