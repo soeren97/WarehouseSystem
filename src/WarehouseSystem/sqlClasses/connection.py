@@ -64,7 +64,7 @@ class SQLConnection:
         engine = create_engine(
             f"mysql+mysqlconnector://{self.username}:{self.password}"
             "@localhost/Warehouse",
-            echo=True,
+            echo=False,
         )
 
         # Create categories table
