@@ -2,6 +2,7 @@
 
 from WarehouseSystem.sqlClasses.Items import Item
 from WarehouseSystem.userInteraction.addMeny import AddMenu
+from WarehouseSystem.userInteraction.logMenu import LogMenu
 from WarehouseSystem.userInteraction.menu import MenuBuilder
 from WarehouseSystem.userInteraction.searchMenu import SearchMenu
 
@@ -14,8 +15,9 @@ class TerminalMenu(MenuBuilder):
         menu_options = {
             "1": ("Search", self.search),
             "2": ("Add data", self.add_data),
-            "3": ("Create fake dataset", self.create_dataset),
-            "4": ("Exit", self.exit_program),
+            "3": ("See logs", self.see_logs),
+            "4": ("Create fake dataset", self.create_dataset),
+            "5": ("Exit", self.exit_program),
         }
         super().__init__(menu_options)
 
@@ -32,7 +34,13 @@ class TerminalMenu(MenuBuilder):
         print("You selected add data.")
         add_menu = AddMenu()
         add_menu.run()
-        input("Press Enter to return to the main menu...")
+
+    def see_logs(self) -> None:
+        """Show transactions."""
+        self.clear_terminal()
+        print("You selected logs.")
+        log_menu = LogMenu()
+        log_menu.run()
 
     def create_dataset(self) -> None:
         """Create fake dataset."""

@@ -6,7 +6,7 @@ from typing import Optional
 from sqlalchemy.orm import Session
 
 from WarehouseSystem.constants import transactions_types
-from WarehouseSystem.logging import logger_wrapper_transactions
+from WarehouseSystem.logging.logging import logger_wrapper_transactions
 from WarehouseSystem.sqlClasses.add.Item import ItemAdder
 from WarehouseSystem.sqlClasses.Items import Item
 from WarehouseSystem.sqlClasses.Transactions import Transaction

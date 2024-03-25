@@ -4,7 +4,7 @@ from typing import Optional
 
 from sqlalchemy.orm import Session
 
-from WarehouseSystem.logging import logger_wrapper_items
+from WarehouseSystem.logging.logging import logger_wrapper_items
 from WarehouseSystem.sqlClasses.Items import Item
 
 

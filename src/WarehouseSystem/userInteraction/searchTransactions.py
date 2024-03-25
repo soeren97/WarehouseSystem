@@ -36,5 +36,4 @@ class SearchTransactionsMenu(MenuBuilder):
         """Perform action for searching items."""
         self.clear_terminal()
         print("You selected Search Items.")
-        # Add your logic for searching items here
         input("Press Enter to return to the search menu...")

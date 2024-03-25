@@ -4,6 +4,14 @@ import pandas as pd
 from faker import Faker
 from sqlalchemy.ext.declarative import declarative_base
 
+from WarehouseSystem.logging.LogHandler import LogHandler
+
+logs = ["System", "Items", "Transactions"]
+
+loghandler = LogHandler()
+for log_name in logs:
+    loghandler.init_logger(log_name)
+
 Base = declarative_base()
 
 fake = Faker()

@@ -1,5 +1,6 @@
 # Folders
 build/*
+logs/*
 
 # Files
 config.json
