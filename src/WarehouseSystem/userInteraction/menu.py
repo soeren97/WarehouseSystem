@@ -70,8 +70,8 @@ class MenuBuilder:
             f"Name: {item.name}, "
             f"Description: {item.description}, "
             f"Price: {item.price}, "
-            f"Number in stock: {item.number_in_stock}"
-            f"Category: {item.category}"
+            f"Number in stock: {item.number_in_stock}, "
+            f"Category: {item.category.name}"
         )
 
     @staticmethod
