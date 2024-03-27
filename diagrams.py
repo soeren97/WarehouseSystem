@@ -17,7 +17,9 @@ def create_uml() -> None:
 
     # Get the list of Python files in the current directory and its subdirectories
     python_files = []
-    for root, dirs, files in os.walk("."):
+    for root, _, files in os.walk("."):
+        if "build" in root:
+            continue  # Skip the 'build' directory
         for file in files:
             if file.endswith(".py"):
                 python_files.append(os.path.join(root, file))
@@ -59,8 +61,8 @@ def create_uml() -> None:
             # Generate PNG image from the .dot file
             subprocess.run(["dot", "-Tpng", dot_file_path, "-o", png_file_path])
 
-            # Remove the .dot file after generating the PNG image
-            os.remove(dot_file_path)
+        # Remove the .dot file after generating the PNG image
+        os.remove(dot_file_path)
 
 
 def create_ER_diagram() -> None:
