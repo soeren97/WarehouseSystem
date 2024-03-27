@@ -1,12 +1,18 @@
-"""Script for creating UML diagrams."""
+"""Script for creating diagrams."""
 
 import os
 import subprocess
 
+from sqlalchemy_schemadisplay import create_schema_graph
 
-def Create_uml() -> None:
+from WarehouseSystem.constants import Base
+from WarehouseSystem.sqlClasses.connection import SQLConnection
+from WarehouseSystem.utils import ConfigManager
+
+
+def create_uml() -> None:
     """Create UML diagrams."""
-    uml_dir = "UML"
+    uml_dir = "Diagrams/UML"
     os.makedirs(uml_dir, exist_ok=True)
 
     # Get the list of Python files in the current directory and its subdirectories
@@ -57,5 +63,19 @@ def Create_uml() -> None:
             os.remove(dot_file_path)
 
 
+def create_ER_diagram() -> None:
+    """Create a ER diagram."""
+    config_manager = ConfigManager("config.json")
+    connection = SQLConnection(config_manager.username(), config_manager.password())
+
+    # Generate the schema graph
+    graph = create_schema_graph(
+        engine=connection.session.connection().engine,
+        metadata=Base.metadata,
+    )
+    graph.write_png("Diagrams/ER.png")
+
+
 if __name__ == "__main__":
-    Create_uml()
+    create_uml()
+    create_ER_diagram()

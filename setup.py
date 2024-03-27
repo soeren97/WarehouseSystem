@@ -13,7 +13,7 @@ INSTALL_REQUIRES = [
     "sqlalchemy",
     "mysql-connector-python",
     "pylint",
-    "pandas",
+    "sqlalchemy-schemadisplay",
 ]
 
 EXTRAS_REQUIRE = {

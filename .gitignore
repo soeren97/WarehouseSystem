@@ -1,7 +1,7 @@
 # Folders
 build/*
 logs/*
-UML/*
+Diagrams/*
 
 # Files
 config.json
